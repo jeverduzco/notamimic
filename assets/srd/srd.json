@@ -1,0 +1,28 @@
+[
+  {
+    "title": "Ancestries",
+    "content": [
+      {
+        "title": "Reading Ancestry Entries",
+        "text": "Each entry begins with an overview of the ancestry, examining its culture and place in the world. This is followed by rules elements you need to know to build a character of that ancestry, including ability boosts and ability flaws, Hit Points, size, Speed, languages, and other special rules. The entries then list the ancestry feats you can select as your character increases in level.\n\nEach ancestry detailed here follows the format described below."
+      },
+      {
+        "title": "Overview",
+        "text": "Each entry begins with a brief introduction to the ancestry. This is followed by a section that provides the broad physical characteristics associated with an ancestry’s members and background information about the ancestry’s culture as a whole. This section also gives you a sense of the ancestry’s history, providing insight to personality types or viewpoints that are common among members of that ancestry. of course, you can always play a character whose personality and motivations run far afield of typical members of her ancestry."
+      },
+      {
+        "title": "Rules",
+        "text": "This section includes all of the mechanical details you need to play a character of a given ancestry.\n\n"
+      }
+    ]
+  },
+  {
+    "title": "Classes",
+    "content": [
+      {
+        "title": "Reading Class Entries",
+        "text": "Each class entry includes information about typical members of the class, as well as suggestions for roleplaying characters of that class and playing such characters in the game’s various modes. Each class provides your character with an ability boost in a key ability score, a number of Hit Points she receives at each level, her proficiencies in various abilities and equipment, signature skills in which she can excel, special abilities from her class features, and more. Your character’s class entry also provides all of the information needed when she gains levels, so it will be a vital reference to you throughout the course of your campaign.\n\nThe elements of each entry are described below."
+      }
+    ]
+  }
+]

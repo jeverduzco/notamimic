@@ -18,7 +18,15 @@
 
 <script lang="ts">
   import {Component, Vue} from "vue-property-decorator";
+  import {
+    State,
+    Getter,
+    Action,
+    Mutation,
+    namespace
+  } from 'vuex-class'
 
+  const jumpTo = namespace('ToolBar/JumpTo');
   @Component({
     components: {}
   })
@@ -26,8 +34,18 @@
     $pathfinder;
     $route;
 
+    @jumpTo.Mutation('setShow') setShowJumpTo;
+
     get pageData() {
       return this.$pathfinder.srd.data.find(d => d.title === this.$route.params.page);
+    }
+
+    mounted() {
+      this.setShowJumpTo(true);
+    }
+
+    beforeDestroy() {
+      this.setShowJumpTo(false);
     }
   }
 </script>

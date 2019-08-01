@@ -49,7 +49,7 @@ async function start() {
   consola.ready({
     message: `Server listening on http://${host}:${port}`,
     badge: true
-  })
+  });
 }
 
 start();

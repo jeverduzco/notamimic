@@ -1,6 +1,6 @@
 import {arrayProp, prop, Typegoose} from 'typegoose';
-import {Rarity, SpellSchool, SpellType, Trait} from '../enums';
-import {Action} from '~/server/database/schmas/ActionSchema';
+import {Rarity, SpellSchool, SpellType, Trait} from '../../enums';
+import {Action} from './ActionSchema';
 
 export class Spell extends Typegoose {
   @prop({required: true})

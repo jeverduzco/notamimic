@@ -15,8 +15,8 @@
     "sourceMap": true,
     "strict": true,
     "noImplicitAny": false,
-    "noEmit": true,
     "baseUrl": ".",
+    "outDir": "./dist",
     "paths": {
       "~/*": [
         "./*"
@@ -29,5 +29,8 @@
       "@types/node",
       "@nuxt/vue-app"
     ]
-  }
+  },
+  "include": [
+    "./**/*"
+  ]
 }

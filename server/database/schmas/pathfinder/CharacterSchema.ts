@@ -3,7 +3,7 @@ import {Ability, Alignment, Size, Trait} from '../../enums';
 import {Class} from './ClassSchema';
 import {Ancestry} from './AncestrySchema';
 import {Background} from './BackgroundSchema';
-import {empty} from "~/database/enums/Abilities";
+import {empty} from '../../enums/Abilities';
 
 export class Character extends Typegoose {
   @prop({required: true})

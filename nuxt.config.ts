@@ -46,6 +46,7 @@ const config: NuxtConfiguration = {
   */
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/proxy',
     '@nuxtjs/auth',
     '@nuxtjs/vuetify',
     '@nuxtjs/pwa',
@@ -53,11 +54,21 @@ const config: NuxtConfiguration = {
     '@nuxtjs/markdownit',
     'svg-to-vue-component/nuxt'
   ],
+  proxy: {
+    '/api': {
+      target: '0.0.0.0',
+      pathRewrite: {
+        '^/api': '/'
+      }
+    }
+  },
   markdownit: {
     injected: true
   },
   axios: {
-    baseURL: 'https://localhost.com/api/v1'
+    proxy: true,
+    proxyHeaders: false,
+    credentials: false
   },
   auth: {
     strategies: {
@@ -156,6 +167,7 @@ const config: NuxtConfiguration = {
   icon: {
     iconSrc: './assets/icons/siteIcon.png'
   },
+  render: {http2: {push: true}},
   /*
   ** Build configuration
   */

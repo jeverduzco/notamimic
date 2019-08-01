@@ -45,6 +45,6 @@
 
 <style>
   html {
-    overflow-y: visible;
+
   }
 </style>

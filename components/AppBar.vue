@@ -5,35 +5,36 @@
     clipped-left
     class="white--text"
   >
-    <v-app-bar-nav-icon @click="setJumpTo(!showNav)" v-if="showNavIcon" class="white--text"/>
-    <Logo width="38"/>
+    <v-app-bar-nav-icon @click="setShowNav(!showNav)" v-if="showNavIcon" class="white--text"/>
+    <Logo v-if="showLogo"></Logo>
+    <v-spacer></v-spacer>
+    <JumpTo v-if="isHydrated && showJumpTo" :jumps="jumps"></JumpTo>
+    <v-spacer></v-spacer>
 
-    <div class="middle">
-      <v-select :v-if="showJumpTo" class="select" append-icon="" label="Jump to...">
-        <SelectIcon slot="append" />
-      </v-select>
+
+    <div class="left">
+      <v-btn
+        v-if="!$auth.loggedIn"
+        link router to="/login"
+        class="white--text"
+        :color="this.$vuetify.theme.themes.light.primary.lighten1">
+        Login
+      </v-btn>
+      <v-avatar size="42" v-else>
+        <img
+          :src="$auth.user.picture"
+          :alt="$auth.user.email"
+        >
+      </v-avatar>
     </div>
-
-    <v-btn
-      v-if="!$auth.loggedIn"
-      link router to="/login"
-      class="white--text"
-      :color="this.$vuetify.theme.themes.light.primary.lighten1">
-      Login
-    </v-btn>
-    <v-avatar size="42" v-else>
-      <img
-        :src="$auth.user.picture"
-        :alt="$auth.user.email"
-      >
-    </v-avatar>
   </v-app-bar>
 </template>
 
 <script lang="ts">
   import {Component, Vue} from 'vue-property-decorator'
-  import Logo from '../assets/icons/login/theEye.svg';
+  import Logo from './AnimatedLogo.vue';
   import SelectIcon from '../assets/icons/AppBar/selectIcon.svg';
+  import JumpTo from './JumpTo.vue';
   import {namespace} from 'vuex-class';
 
   const jumpTo = namespace('ToolBar/JumpTo');
@@ -42,7 +43,8 @@
   @Component({
     components: {
       Logo: Logo,
-      SelectIcon: SelectIcon
+      SelectIcon: SelectIcon,
+      JumpTo
     }
   })
   export default class AppBar extends Vue {
@@ -54,11 +56,17 @@
     isHydrated = false;
 
     @navDrawer.Getter('show') showNav;
+    @navDrawer.Mutation('setShow') setShowNav;
     @jumpTo.Getter('show') showJumpTo;
+    @jumpTo.Getter('jumps') jumps;
     @jumpTo.Mutation('setShow') setJumpTo;
 
     get showNavIcon() {
-      return this.isHydrated && this.$vuetify && this.$vuetify.breakpoint && this.$vuetify.breakpoint.xsOnly
+      return this.isHydrated && this.$vuetify && this.$vuetify.breakpoint && this.$vuetify.breakpoint.smAndDown
+    }
+
+    get showLogo() {
+      return this.isHydrated && this.$vuetify && this.$vuetify.breakpoint && this.$vuetify.breakpoint.smAndUp
     }
 
     async mounted() {
@@ -69,16 +77,7 @@
   }
 </script>
 
-<style lang="sass">
-  .middle
-    flex-grow: 1
-    & .select
-      width: 100px
-      margin: 0 auto
-      padding-top: 25px
-      & div, label
-        color: #fff
-
-      & div::before
-        border: 0!important
+<style lang="sass" scoped>
+  .left
+    margin-left: 16px
 </style>

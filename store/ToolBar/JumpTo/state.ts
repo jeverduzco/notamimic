@@ -1,3 +1,4 @@
 export default () => ({
-  show: false
+  show: false,
+  jumps: []
 });

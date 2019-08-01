@@ -19,7 +19,7 @@
     }
 
     mounted() {
-      this.iris = this.$refs.logo.$el.querySelector('[class$="iris"]');
+      this.iris = (this.$refs.logo as Vue).$el.querySelector('[class$="iris"]');
 
       setInterval(this.moveIrisRandomly, 15 * 1000)
     }

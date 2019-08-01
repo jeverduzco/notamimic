@@ -49,7 +49,6 @@
   })
   export default class AppBar extends Vue {
     private $auth;
-    private $vuetify;
 
     right = true;
     title = 'Dungeon Tools';

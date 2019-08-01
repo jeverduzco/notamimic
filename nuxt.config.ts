@@ -46,7 +46,6 @@ const config: NuxtConfiguration = {
   */
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/proxy',
     '@nuxtjs/auth',
     '@nuxtjs/vuetify',
     '@nuxtjs/pwa',
@@ -54,14 +53,6 @@ const config: NuxtConfiguration = {
     '@nuxtjs/markdownit',
     'svg-to-vue-component/nuxt'
   ],
-  proxy: {
-    '/api': {
-      target: '0.0.0.0',
-      pathRewrite: {
-        '^/api': '/'
-      }
-    }
-  },
   markdownit: {
     injected: true
   },
@@ -99,10 +90,8 @@ const config: NuxtConfiguration = {
   ** https://github.com/nuxt-community/vuetify-module
   */
   vuetify: {
+    treeShake: false,
     theme: {
-      options: {
-        customProperties: true,
-      },
       themes: {
         light: {
           primary: {
@@ -144,18 +133,11 @@ const config: NuxtConfiguration = {
         httpEndpoint: 'http://localhost:4000',
         // You can use `wss` for secure connection (recommended in production)
         // Use `null` to disable subscriptions
-        wsEndpoint: 'ws://localhost:4000', // optional
         // LocalStorage token
         tokenName: 'apollo-token', // optional
-        // Enable Automatic Query persisting with Apollo Engine
-        persisting: false, // Optional
-        // Use websockets for everything (no HTTP)
-        // You need to pass a `wsEndpoint` for this to work
-        websocketsOnly: false // Optional
       },
       test: {
         httpEndpoint: 'http://localhost:5000',
-        //wsEndpoint: 'ws://localhost:5000',
         tokenName: 'apollo-token'
       }
     }

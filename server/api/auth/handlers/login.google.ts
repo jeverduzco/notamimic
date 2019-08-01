@@ -6,7 +6,7 @@ import {getOrCreateUser} from '../helpers/getOrCreateUser';
 
 export const googleLogin = async (ctx: Context) => {
   const googleAuth = new google.auth.OAuth2(
-    ...Object.values(config.get('auth.google'))
+    ...(Object.values(config.get('auth.google')) as any)
   );
 
   const {code} = ctx.query;

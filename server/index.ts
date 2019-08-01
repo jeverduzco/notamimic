@@ -1,6 +1,4 @@
 import Koa from 'koa'
-import Http2 from 'http2'
-import fs from 'fs';
 import consola from 'consola'
 import {Builder, Nuxt} from 'nuxt'
 import config from 'config';
@@ -46,20 +44,11 @@ async function start() {
     nuxt.render(ctx.req, ctx.res)
   });
 
-  Http2.createSecureServer({
-    key: fs.readFileSync(config.get('cert.keyPath')),
-    cert: fs.readFileSync(config.get('cert.certPath'))
-  }, app.callback()).listen(3000, '0.0.0.0', async () => {
-    await initApollo();
-    consola.ready({
-      message: `Server listening on http://${host}:${port}`,
-      badge: true
-    })
-  });
-
-  process.on('unhandledRejection', (reason, p) => {
-    console.log('Unhandled Rejection at: Promise', p, 'reason:', reason, reason.stack);
-    // application specific logging, throwing an error, or other logic here
+  app.listen(3000, '0.0.0.0');
+  await initApollo();
+  consola.ready({
+    message: `Server listening on http://${host}:${port}`,
+    badge: true
   });
 }
 
